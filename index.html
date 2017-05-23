@@ -7,7 +7,6 @@
 <body >
     <div class="container">
         <section ng-controller="MainController as mainCtrl">
-            <button ng-click="mainCtrl.saveTodo()">SAVE</button>
             <table class="table">
                 <thead>
                     <th>Name</th>
@@ -15,7 +14,7 @@
                     <th>Action</th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in mainCtrl.todos">
+                    <tr ng-repeat="item in mainCtrl.todos track by $index">
                         <td ng-hide="item.isEditMode" >{{item.name}}</td>
                         <td ng-hide="item.isEditMode">{{item.priority}}</td>
                         <td ng-hide="item.isEditMode"><button clas="btn" ng-click="item.isEditMode=true">EDIT</td>
@@ -29,7 +28,7 @@
                                 </select
                         ></td>
                         <td ng-show="item.isEditMode">
-                            <button clas="btn" ng-click="item.isEditMode=false" >SAVE</button>
+                            <button clas="btn" ng-click="mainCtrl.editTodo(item);" >SAVE</button>
                             <button clas="btn" ng-click="mainCtrl.deleteTodo(item)" >DELETE</button>
                         </td>
                     </tr>

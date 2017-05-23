@@ -5,10 +5,15 @@ angular.module('todo', ['myFactory'])
         mainCtrl.todos = todoProvider.getTodos();
         mainCtrl.deleteTodo = item => {
             todoProvider.deleteTodo(item.id);
+            todoProvider.save();
         }
         mainCtrl.saveTodo = () =>{
             alert('saved')
             todoProvider.save();
+        }
+        mainCtrl.editTodo = item => {
+            item.isEditMode=false;
+            todoProvider.save()
         }
     }  ] )
     .controller('AddController',['todoProvider', function(todoProvider){
@@ -16,7 +21,9 @@ angular.module('todo', ['myFactory'])
         addCtrl.addTodo = () => {
             console.log('called')
             todoProvider.createTodo(addCtrl.name, addCtrl.priority );
+            todoProvider.save();
             delete addCtrl.name
             delete addCtrl.priority
+            
         }
     }  ] )
