@@ -6,6 +6,15 @@ angular.module('myFactory', [])
 
         ];
         return {
+            createTodo: (name, priority) => {
+                var now = new Date();
+                var obj = {
+                    id:now.getTime(),
+                    name:name,
+                    priority:priority
+                }
+                todos.push(obj);
+            },
             getTodos:() => {
                 return todos
             }
