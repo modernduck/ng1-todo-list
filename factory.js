@@ -1,3 +1,5 @@
+var STORAGE_KEY = 'todo-list'
+
 angular.module('myFactory', [])
     .factory('todoProvider' ,  () => {
         var todos = [
@@ -6,6 +8,15 @@ angular.module('myFactory', [])
 
         ];
         return {
+            load:() => {
+                //var loadData = 
+                if(localStorage[STORAGE_KEY]){
+                    todos = JSON.parse(localStorage[STORAGE_KEY])
+                }
+            },
+            save: () => {
+                localStorage[STORAGE_KEY] =  JSON.stringify(todos)
+            },
             deleteTodo: id => {
                 var index = todos.findIndex(item => {
                     return id == item.id
