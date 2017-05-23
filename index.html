@@ -25,7 +25,13 @@
 
         </section>
         <section ng-controller="AddController as addCtrl">
-            
+            <input type="text" ng-model="addCtrl.name" placeholder="add what u wanna do" />
+            <select ng-model="addCtrl.priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button class="btn btn-primary" ng-click="addTodo()">ADD</button>            
         </section>
     </div>
     <script src="app.js"></script>
