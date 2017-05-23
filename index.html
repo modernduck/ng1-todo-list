@@ -5,14 +5,32 @@
     <link rel="stylesheet" href="bootstrap.min.css"/>
 </head>
 <body >
-    <section ng-controller="MainController as mainCtrl">
-        
-    </section>
-    <section ng-controller="AddController as addCtrl">
-        
-    </section>
-    <script src="factory.js"></script>
+    <div class="container">
+        <section ng-controller="MainController as mainCtrl">
+          
+            <table class="table">
+                <thead>
+                    <th>Name</th>
+                    <th>Priority</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in mainCtrl.todos">
+                        <td>{{item.name}}</td>
+                        <td>{{item.priority}}</td>
+                        <td><button clas="btn">EDIT</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+        <section ng-controller="AddController as addCtrl">
+            
+        </section>
+    </div>
     <script src="app.js"></script>
+    <script src="factory.js"></script>
+    
 
 </body>
 </html>
