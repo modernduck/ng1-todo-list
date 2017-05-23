@@ -16,9 +16,22 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in mainCtrl.todos">
-                        <td>{{item.name}}</td>
-                        <td>{{item.priority}}</td>
-                        <td><button clas="btn">EDIT</td>
+                        <td ng-hide="item.isEditMode" >{{item.name}}</td>
+                        <td ng-hide="item.isEditMode">{{item.priority}}</td>
+                        <td ng-hide="item.isEditMode"><button clas="btn" ng-click="item.isEditMode=true">EDIT</td>
+
+                        <td ng-show="item.isEditMode" ><input type="text" ng-model="item.name" />  </td>
+                        <td ng-show="item.isEditMode">
+                                <select ng-model="item.priority">
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                </select
+                        ></td>
+                        <td ng-show="item.isEditMode">
+                            <button clas="btn" ng-click="item.isEditMode=false" >SAVE</button>
+                            <button clas="btn" ng-click="mainCtrl.deleteTodo(item)" >DELETE</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

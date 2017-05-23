@@ -6,6 +6,13 @@ angular.module('myFactory', [])
 
         ];
         return {
+            deleteTodo: id => {
+                var index = todos.findIndex(item => {
+                    return id == item.id
+                })
+                console.log(index)
+                todos.splice(index, 1);
+            },
             createTodo: (name, priority) => {
                 var now = new Date();
                 var obj = {

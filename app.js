@@ -1,6 +1,10 @@
 angular.module('todo', ['myFactory'])
     .controller('MainController',['todoProvider', function(todoProvider){
-        this.todos = todoProvider.getTodos();
+        var mainCtrl = this;
+        mainCtrl.todos = todoProvider.getTodos();
+        mainCtrl.deleteTodo = item => {
+            todoProvider.deleteTodo(item.id);
+        }
     }  ] )
     .controller('AddController',['todoProvider', function(todoProvider){
         var addCtrl = this;
